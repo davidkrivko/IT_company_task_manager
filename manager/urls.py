@@ -7,4 +7,4 @@ urlpatterns = [
 ]
 
 
-appname = "manager"
+app_name = "manager"
