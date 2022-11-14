@@ -5,3 +5,6 @@ from manager.views import index
 urlpatterns = [
     path("", index)
 ]
+
+
+appname = "manager"
