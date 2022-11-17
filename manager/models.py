@@ -25,9 +25,9 @@ class Worker(AbstractUser):
 
 class Task(models.Model):
     PRIORITY_LEVEL_CHOICES = (
-        "high priority",
-        "medium priority",
-        "low priority",
+        ("H", "high priority"),
+        ("M", "medium priority"),
+        ("L", "low priority"),
     )
 
     name = models.CharField(max_length=255)
@@ -35,9 +35,9 @@ class Task(models.Model):
     deadline = models.DateField()
     is_completed = models.BooleanField()
     priority = models.CharField(
-        max_length=15,
+        max_length=1,
         choices=PRIORITY_LEVEL_CHOICES,
         default="medium priority"
     )
-    task_type = models.ForeignKey(TaskType, on_delete=models.SET_NULL)
+    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
     assignees = models.ManyToManyField(Worker)
