@@ -13,7 +13,7 @@ def index(request):
     num_not_completed_task = Task.objects.filter(is_completed=False).count()
 
     context = {
-        "num_visits": num_visits,
+        "num_visits": num_visits + 1,
         "num_workers": num_workers,
         "num_completed_task": num_completed_task,
         "num_not_completed_task": num_not_completed_task,
