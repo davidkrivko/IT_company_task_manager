@@ -1,1 +1,20 @@
-{%  %}
+{% extends "base.html" %}
+
+{% block title %}
+  Home Page of IT manager
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome to the best IT manager in the world!</h1>
+  <hr>
+  <h2>Right now we have:</h2>
+  <ul>
+    <li>{{ num_completed_task }} completed tasks</li>
+    <li>{{ num_workers }} workers</li>
+    <li>{{ num_not_completed_task }} not completed tasks</li>
+  </ul>
+
+  <br>
+
+  <p>You visit our web-site {{ num_visits }}, thank you!</p>
+{% endblock %}
