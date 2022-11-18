@@ -23,7 +23,7 @@ class Position(models.Model):
 
 
 class Worker(AbstractUser):
-    position = models.ForeignKey(Position, blank=True, null=True,on_delete=models.CASCADE)
+    position = models.ForeignKey(Position, blank=True, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["username"]
@@ -52,4 +52,4 @@ class Task(models.Model):
     assignees = models.ManyToManyField(Worker)
 
     class Meta:
-        ordering = ["is_completed", "name"]
+        ordering = ["is_completed", "deadline", "priority"]
