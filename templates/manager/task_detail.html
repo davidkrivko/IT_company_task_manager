@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Task detail
+{% endblock %}
+
+{% block content %}
+  <h1>
+    {{ task.name }}
+    <a href="{% url "manager:task-update" pk=task.id %}"
+       class="btn btn-primary"
+       style="float: right; margin: 0 2px 0 2px">Update</a>
+    <a href="{% url "manager:task-delete" pk=task.id %}"
+       class="btn btn-danger"
+       style="float: right; margin: 0 2px 0 2px">Delete</a>
+  </h1>
+
+  <h3>{{ task.task_type }}</h3>
+
+  <hr>
+
+  <h3>Description</h3>
+  <p>{{ task.description }}</p>
+
+  <hr>
+
+  <h3>Priority level: {{ task.get_priority_display }}</h3>
+
+  <hr>
+
+  <h3>Deadline: {{ task.deadline }}</h3>
+
+  <hr>
+
+  <h3>Assignees</h3>
+  <ul>
+    {% for assign in task.assignees.all %}
+      <li>{{ assign.first_name }} {{ assign.last_name }}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

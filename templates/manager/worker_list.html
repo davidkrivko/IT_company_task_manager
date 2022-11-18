@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+  Workers
+{% endblock %}
+
+{% block content %}
+  <h1>
+    List Work
+    <a href="{% url "manager:worker-create" %}"
+       class="btn btn-primary"
+       style="float: right; margin: 0 2px 0 2px">Create</a>
+  </h1>
+  <ul>
+    {% for worker in worker_list %}
+      <li><a href="{% url "manager:worker-detail" pk=worker.id %} ">{{ worker.last_name }} {{ worker.first_name }}({{ worker.username }})</a></li>
+    {% endfor %}
+
+  </ul>
+{% endblock %}

@@ -10,6 +10,6 @@
 
   <li class="list-group-item"><a href="{% url "manager:index" %}">Home</a></li>
   <li class="list-group-item"><a href="{% url "manager:task-list" %}">Tasks</a></li>
-  <li class="list-group-item"><a href="#">Workers</a></li>
-  <li class="list-group-item"><a href="#">Positions</a></li>
+  <li class="list-group-item"><a href="{% url "manager:worker-list" %}">Workers</a></li>
+  <li class="list-group-item"><a href="{% url "manager:position-list" %}">Positions</a></li>
 </ul>

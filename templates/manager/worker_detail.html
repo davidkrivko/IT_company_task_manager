@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+  Worker {{ worker.id }}
+{% endblock %}
+
+{% block content %}
+  <h1>
+    {{ worker.username }}
+    <a href="{% url "manager:worker-update" pk=worker.id %}"
+       class="btn btn-primary"
+       style="margin: 0 2px 0 2px; float: right">Update</a>
+    <a href="{% url "manager:worker-delete" pk=worker.id %}"
+       class="btn btn-danger"
+       style="margin: 0 2px 0 2px; float: right">Delete</a>
+  </h1>
+
+  <hr>
+
+  <p>{{ worker.last_name }} {{ worker.first_name }}</p>
+  <p>Position: {{ worker.position }}</p>
+{% endblock %}

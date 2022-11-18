@@ -23,7 +23,7 @@ class Position(models.Model):
 
 
 class Worker(AbstractUser):
-    position = models.ForeignKey(Position, blank=True, null=True, on_delete=models.CASCADE)
+    position = models.ForeignKey(Position, blank=True, null=True, on_delete=models.CASCADE, related_name="workers")
 
     class Meta:
         ordering = ["username"]
@@ -42,13 +42,13 @@ class Task(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     deadline = models.DateField()
-    is_completed = models.BooleanField()
+    is_completed = models.BooleanField(default=False)
     priority = models.CharField(
         max_length=1,
         choices=PRIORITY_LEVEL_CHOICES,
         default="medium priority"
     )
-    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
+    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE, related_name="tasks")
     assignees = models.ManyToManyField(Worker)
 
     class Meta:

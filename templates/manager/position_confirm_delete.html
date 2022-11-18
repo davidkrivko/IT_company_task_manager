@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  Delete position
+{% endblock %}
+
+{% block content %}
+  <h1>Are you sure?</h1>
+  <p>if you want to remove the position click the button below</p>
+  <form action="" method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+
+    <input type="submit" value="Delete" class="btn btn-danger">
+  </form>
+{% endblock %}
