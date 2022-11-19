@@ -8,11 +8,9 @@
   <h1>
     {{ worker.username }}
     <a href="{% url "manager:worker-update" pk=worker.id %}"
-       class="btn btn-primary"
-       style="margin: 0 2px 0 2px; float: right">Update</a>
+       class="btn btn-primary CRUD_link">Update</a>
     <a href="{% url "manager:worker-delete" pk=worker.id %}"
-       class="btn btn-danger"
-       style="margin: 0 2px 0 2px; float: right">Delete</a>
+       class="btn btn-danger CRUD_link">Delete</a>
   </h1>
 
   <hr>

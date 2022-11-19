@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block title %}
   Tasks
@@ -8,9 +9,13 @@
   <h1>
     Task list
     <a href="{% url "manager:task-create" %}"
-       class="btn btn-primary"
-       style="float: right; margin: 0 2px 0 2px">Create</a>
+       class="btn btn-primary CRUD_link">Create</a>
   </h1>
+
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input type="submit" value="Submit" class="btn btn-secondary">
+  </form>
 
   {% if task_list %}
     <table class="table">
@@ -19,6 +24,8 @@
         <th>Priority</th>
         <th>Deadline</th>
         <th>Complete</th>
+        <th>Update</th>
+        <th>Delete</th>
       </tr>
     {% for task in task_list %}
       <tr>
@@ -26,6 +33,8 @@
         <td>{{ task.priority }}</td>
         <td>{{ task.deadline }}</td>
         <td>{{ task.is_completed }}</td>
+        <td><a href="{% url "manager:task-update" pk=task.id %}">Update</a></td>
+        <td><a href="{% url "manager:task-delete" pk=task.id %}">Delete</a></td>
       </tr>
     {% endfor %}
 

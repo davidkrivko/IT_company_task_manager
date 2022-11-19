@@ -7,11 +7,26 @@
 {% block content %}
   <h1>
     List position
-    <a href="{% url "manager:position-create" %}" style="float: right" class="btn btn-primary">Create</a>
+    <a href="{% url "manager:position-create" %}" class="btn btn-primary CRUD_link">Create</a>
   </h1>
-  <ul>
+  {% if position_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
     {% for position in position_list %}
-      <li><a href="{% url "manager:position-detail" pk=position.id %}">{{ position.name }}</a></li>
+      <tr>
+        <td><a href="{% url "manager:position-detail" pk=position.id %}">{{ position.name }}</a></td>
+        <td><a href="{% url "manager:position-update" pk=position.id %}">Update</a></td>
+        <td><a href="{% url "manager:position-delete" pk=position.id %}">Delete</a></td>
+      </tr>
     {% endfor %}
-  </ul>
+
+    </table>
+  {% else %}
+    <p>At the moment we don't have positions</p>
+  {% endif %}
+
 {% endblock %}

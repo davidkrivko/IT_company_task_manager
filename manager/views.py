@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from manager.forms import WorkerCreationForm, TaskSearchForm
 from manager.models import Task, Position, Worker
 
 
@@ -31,6 +32,23 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     paginate_by = 5
     queryset = Task.objects.all().select_related("task_type")
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(TaskListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = TaskSearchForm(initial={"name": name})
+
+        return context
+
+    def get_queryset(self):
+        name = self.request.GET.get("name")
+
+        if name:
+            return self.queryset.filter(name__icontains=name)
+
+        return self.queryset
 
 
 @login_required
@@ -100,8 +118,7 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
 
 class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
     model = Worker
-    fields = ["username", "password", "first_name", "last_name", "position"]
-    success_url = reverse_lazy("manager:worker-list")
+    form_class = WorkerCreationForm
 
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
