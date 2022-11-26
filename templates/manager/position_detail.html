@@ -5,19 +5,22 @@ Position detail
 {% endblock %}
 
 {% block content %}
-  <h1>
-    Position: {{ position.name }}
-    <a href="{% url "manager:position-update" pk=position.id %}"
-       class="btn btn-primary CRUD_link">Update</a>
+  <div class="empty-block under-nav"> </div>
+  <div class="form">
+    <h1>
+      Position: {{ position.name }}
+      <a href="{% url "manager:position-update" pk=position.id %}"
+         class="btn btn-primary CRUD_link">Update</a>
 
-    <a href="{% url "manager:position-delete" pk=position.id %}"
-       class="btn btn-danger CRUD_link">Delete</a>
-  </h1>
-  <ul>
-    {% for worker in position.workers.all %}
-      <li>{{ worker.first_name }} {{ worker.last_name }}({{ worker.username }})</li>
-      {% empty %}
-        <p>Unfortunately, we do not have such employees(</p>
-    {% endfor %}
-  </ul>
+      <a href="{% url "manager:position-delete" pk=position.id %}"
+         class="btn btn-danger CRUD_link">Delete</a>
+    </h1>
+    <ul>
+      {% for worker in position.workers.all %}
+        <li>{{ worker.first_name }} {{ worker.last_name }}({{ worker.username }})</li>
+        {% empty %}
+          <p>Unfortunately, we do not have such employees(</p>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
