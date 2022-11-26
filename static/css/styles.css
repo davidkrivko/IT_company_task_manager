@@ -224,3 +224,8 @@ nav .dropdown:hover > .dropdown-menu {
 .form {
     margin: 0 20px;
 }
+
+.task-type-create {
+    text-align: center;
+    background-color: #43A047;
+}

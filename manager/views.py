@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from manager.forms import WorkerCreationForm, TaskSearchForm
-from manager.models import Task, Position, Worker
+from manager.models import Task, Position, Worker, TaskType
 
 
 def index(request):
@@ -80,6 +80,12 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("manager:task-list")
+
+
+class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = TaskType
+    success_url = reverse_lazy("manager:task-list")
+    fields = "__all__"
 
 
 class PositionListView(LoginRequiredMixin, generic.ListView):

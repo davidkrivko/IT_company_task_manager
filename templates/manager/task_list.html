@@ -10,7 +10,11 @@
   <div class="tasks">
     <div class="task task-create">
       <h1><a href="{% url "manager:task-create" %}" class="link link-create">+</a></h1>
-      <p>Create a new one</p>
+      <p>Create a new task</p>
+    </div>
+    <div class="task task-type-create">
+      <h1><a href="{% url "manager:task-type-create" %}" class="link link-create">+</a></h1>
+      <p>Add new task type</p>
     </div>
     {% for task in task_list %}
       <div class="task">
