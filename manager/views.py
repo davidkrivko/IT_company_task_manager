@@ -9,7 +9,6 @@ from manager.forms import WorkerCreationForm, TaskSearchForm
 from manager.models import Task, Position, Worker
 
 
-@login_required
 def index(request):
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
@@ -18,11 +17,14 @@ def index(request):
     num_completed_task = Task.objects.filter(is_completed=True).count()
     num_not_completed_task = Task.objects.filter(is_completed=False).count()
 
+    important_tasks = Task.objects.filter(is_completed=False).order_by("deadline")[:3]
+
     context = {
         "num_visits": num_visits + 1,
         "num_workers": num_workers,
         "num_completed_task": num_completed_task,
         "num_not_completed_task": num_not_completed_task,
+        "important_tasks": important_tasks,
     }
 
     return render(request, "manager/index.html", context=context)

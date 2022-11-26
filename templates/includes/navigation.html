@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<nav class="navigation">
+  <div class="nav-con-fluid">
+      <a href="/" class="navbar-brand nav-link">IT company manager</a>
+      <ul class="nav-collapse">
+        <li class="navbar navbar-item">
+          <a href="{% url "manager:task-list" %}" class="nav-link link">Tasks</a>
+        </li>
+        <li class="navbar navbar-item">
+          <a href="{% url "manager:worker-list" %}" class="nav-link link">Workers</a>
+        </li>
+        <li class="navbar navbar-item">
+          <a href="{% url "manager:position-list" %}" class="nav-link link">Positions</a>
+        </li>
+        <li class="navbar navbar-item">
+          <hr>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="navbar navbar-item dropdown" id="logout-button">
+            <a href="{% url "manager:worker-detail" pk=user.id %}" class="nav-link link dropdown-toggle">Profile</a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="{% url "manager:worker-detail" pk=user.id %}" class="dropdown-item">Account</a>
+              <a href="{% url "logout" %}" class="dropdown-item">Log out</a>
+            </div>
+          </li>
+          {% else %}
+            <li class="navbar navbar-item">
+              <a href="{% url "login" %}" class="nav-link link">Login</a>
+            </li>
+        {% endif %}
+      </ul>
+  </div>
+</nav>

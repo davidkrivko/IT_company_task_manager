@@ -1,8 +1,226 @@
-body {
-    margin-top: 20px;
-}
+@import "node_modules/bootstrap/scss/_functions.scss";
 
 .CRUD_link {
     float: right;
     margin: 0 2px 0 2px;
+}
+
+.card-body {
+    display: inline-block;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+}
+
+.login-button {
+    background-image: linear-gradient(195deg, #EC407A 0%, #D81B60 100%);
+    margin-bottom: 5px;
+    box-shadow: 0 3px 3px 0 rgba(233, 30, 99, 0.15),
+              0 3px 1px -2px rgba(233, 30, 99, 0.2),
+              0 1px 5px 0 rgba(233, 30, 99, 0.15);
+    width: 100px;
+    height: 50px;
+}
+
+.login-button:hover {
+    box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.4),
+                0 4px 23px 0 rgba(233, 30, 99, 0.15),
+                0 8px 10px -5px rgba(233, 30, 99, 0.2);
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.background-login {
+    min-height: 100vh;
+    min-width: 100%;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.background-dimming-login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
+    opacity: 0.6;
+}
+
+.background-homepage {
+    min-height: 75vh;
+    background-size: cover;
+}
+
+.background-dimming-index {
+    position: absolute;
+    background-size: cover;
+    height: 75%;
+    width: 100%;
+    background-attachment: fixed;
+    background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
+    opacity: 0.6;
+}
+
+.card-index {
+    position: relative;
+    top: -30px;
+    display: block;
+    margin: 0 50px 19px 50px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 10px 15px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.93);
+}
+
+.index-content {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+hr.vertical {
+    position: absolute;
+    margin: 0;
+    width: 1px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background-color: #7b809a33;
+}
+
+.indexes{
+    text-align: center
+}
+
+.text-gradient-1{
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(195deg, #EF5350, #E53935);
+}
+
+.text-gradient-2{
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(195deg, #66BB6A, #43A047);
+}
+
+.text-gradient-3{
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(195deg, #49a3f1, #1A73E8);
+}
+
+.header-index {
+    text-align: center;
+    color: white;
+}
+
+.header {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 230px;
+}
+
+.navigation {
+    position: fixed;
+    justify-content: flex-start;
+    margin: 1rem 1.5rem 1.5rem 1.5rem;
+    padding-top: 0.5rem;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.nav-con-fluid {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar-item {
+    float:left;
+}
+
+.link {
+    text-decoration: none;
+    color: #42424a;
+    text-align: center;
+}
+
+.navbar-brand {
+    margin-top: 8px;
+    padding-bottom: 0;
+}
+
+.navbar {
+    font-weight: bold;
+}
+
+nav .dropdown:hover > .dropdown-menu {
+    display: inline-block;
+    top: 50px;
+}
+
+.empty-block {
+    width: 1px;
+    height: 1px;
+    opacity: 1;
+}
+
+.ul {
+    list-style-type: none;
+}
+
+.task {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 20px;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+.tasks {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 20px;
+}
+
+.task-create {
+    background-color: #1A73E8;
+    color: white;
+    text-align: center;
+}
+
+.link-create {
+    color: white;
+}
+
+.under-nav {
+    height: 100px;
+}
+
+.form {
+    margin: 0 20px;
 }

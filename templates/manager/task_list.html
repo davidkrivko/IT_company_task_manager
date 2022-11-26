@@ -6,40 +6,21 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    Task list
-    <a href="{% url "manager:task-create" %}"
-       class="btn btn-primary CRUD_link">Create</a>
-  </h1>
-
-  <form action="" method="get" class="form-inline">
-    {{ search_form|crispy }}
-    <input type="submit" value="Submit" class="btn btn-secondary">
-  </form>
-
-  {% if task_list %}
-    <table class="table">
-      <tr>
-        <th>Name</th>
-        <th>Priority</th>
-        <th>Deadline</th>
-        <th>Complete</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
+  <div class="empty-block under-nav"> </div>
+  <div class="tasks">
+    <div class="task task-create">
+      <h1><a href="{% url "manager:task-create" %}" class="link link-create">+</a></h1>
+      <p>Create a new one</p>
+    </div>
     {% for task in task_list %}
-      <tr>
-        <td><a href="{% url "manager:task-detail" pk=task.id %}">{{ task.name }}</a></td>
-        <td>{{ task.priority }}</td>
-        <td>{{ task.deadline }}</td>
-        <td>{{ task.is_completed }}</td>
-        <td><a href="{% url "manager:task-update" pk=task.id %}">Update</a></td>
-        <td><a href="{% url "manager:task-delete" pk=task.id %}">Delete</a></td>
-      </tr>
+      <div class="task">
+        <h4><a href="{% url "manager:task-detail" pk=task.id %}" class="link">{{ task.name }}</a></h4>
+        <ul class="ul">
+          <li>Deadline: {{ task.deadline }}</li>
+          <li>Priority: {{ task.get_priority_display }}</li>
+        </ul>
+      </div>
     {% endfor %}
-
-    </table>
-  {% else %}
-    <p>We don't have tasks</p>
-  {% endif %}
+  </div>
 {% endblock %}
+

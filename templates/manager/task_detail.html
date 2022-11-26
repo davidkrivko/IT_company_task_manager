@@ -5,36 +5,38 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {{ task.name }}
-    <a href="{% url "manager:task-update" pk=task.id %}"
-       class="btn btn-primary CRUD_link">Update</a>
-    <a href="{% url "manager:task-delete" pk=task.id %}"
-       class="btn btn-danger CRUD_link">Delete</a>
-  </h1>
+    <div class="empty-block under-nav"> </div>
+    <div class="form">
+      <h1>
+        {{ task.name }}
+        <a href="{% url "manager:task-update" pk=task.id %}"
+           class="btn btn-primary CRUD_link">Update</a>
+        <a href="{% url "manager:task-delete" pk=task.id %}"
+           class="btn btn-danger CRUD_link">Delete</a>
+      </h1>
 
-  <h3>{{ task.task_type }}</h3>
+      <h3>{{ task.task_type }}</h3>
 
-  <hr>
+      <hr>
 
-  <h3>Description</h3>
-  <p>{{ task.description }}</p>
+      <h3>Description</h3>
+      <p>{{ task.description }}</p>
 
-  <hr>
+      <hr>
 
-  <h3>Priority level: {{ task.get_priority_display }}</h3>
+      <h3>Priority level: {{ task.get_priority_display }}</h3>
 
-  <hr>
+      <hr>
 
-  <h3>Deadline: {{ task.deadline }}</h3>
+      <h3>Deadline: {{ task.deadline }}</h3>
 
-  <hr>
+      <hr>
 
-  <h3>Assignees</h3>
-  <ul>
-    {% for assign in task.assignees.all %}
-      <li>{{ assign.first_name }} {{ assign.last_name }}</li>
-    {% endfor %}
-  </ul>
-
+      <h3>Assignees</h3>
+      <ul>
+        {% for assign in task.assignees.all %}
+          <li>{{ assign.first_name }} {{ assign.last_name }}</li>
+        {% endfor %}
+     </ul>
+    </div>
 {% endblock %}

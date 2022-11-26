@@ -1,20 +1,56 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Home Page of IT manager
+  Home Page
 {% endblock %}
 
 {% block content %}
-  <h1>Welcome to the best IT manager in the world!</h1>
-  <hr>
-  <h2>Right now we have:</h2>
-  <ul>
-    <li>{{ num_completed_task }} completed tasks</li>
-    <li>{{ num_workers }} workers</li>
-    <li>{{ num_not_completed_task }} not completed tasks</li>
-  </ul>
+  <div class="background-homepage" style="background-image: url('https://assets-news.housing.com/news/wp-content/uploads/2020/03/16121312/shutterstock_166852532.png')">
+    <span class="background-dimming-index"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 header-index header">
+          <h1>Welcome to the best IT manager in the world!</h1>
+          <p>We have many interesting tasks, projects and people. So please join our team soon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <br>
-
-  <p>You visit our web-site {{ num_visits }}, thank you!</p>
+  <div class="card-index">
+    <div class="index-content">
+      <div class="row">
+        <div class="col-md-4 indexes">
+          <div>
+            <h1 class="text-gradient-1">{{ num_visits }}</h1>
+            <h4>Visits of page</h4>
+            <p>You visit our web-site {{ num_visits }} times. Thank you)</p>
+          </div>
+          <hr class="vertical">
+        </div>
+        <div class="col-md-4 indexes">
+          <div><h1 class="text-gradient-2">{{ num_completed_task }}</h1></div>
+          <h4>Completed tasks</h4>
+          <p>We've already done so much, but I'm sure we can do more.</p>
+          <hr class="vertical">
+        </div>
+        <div class="col-md-4 indexes">
+          <div><h1 class="text-gradient-3">{{ num_workers }}</h1></div>
+          <h4>People</h4>
+          <p>{{ num_workers }} people united by one thing</p>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div>
+        <h2 class="text-gradient-1">The most important tasks</h2>
+        {% for task in important_tasks %}
+          <ul class="ul">
+           <li>{{ task.name }}({{ task.deadline }})</li>
+          </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endblock %}
