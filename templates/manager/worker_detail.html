@@ -5,16 +5,19 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {{ worker.username }}
-    <a href="{% url "manager:worker-update" pk=worker.id %}"
-       class="btn btn-primary CRUD_link">Update</a>
-    <a href="{% url "manager:worker-delete" pk=worker.id %}"
-       class="btn btn-danger CRUD_link">Delete</a>
-  </h1>
+  <div class="empty-block under-nav"> </div>
+  <div class="form">
+    <h1>
+      {{ worker.username }}
+      <a href="{% url "manager:worker-update" pk=worker.id %}"
+         class="btn btn-primary CRUD_link">Update</a>
+      <a href="{% url "manager:worker-delete" pk=worker.id %}"
+         class="btn btn-danger CRUD_link">Delete</a>
+    </h1>
 
-  <hr>
+    <hr>
 
-  <p>{{ worker.last_name }} {{ worker.first_name }}</p>
-  <p>Position: {{ worker.position }}</p>
+    <p>{{ worker.last_name }} {{ worker.first_name }}</p>
+    <p>Position: {{ worker.position }}</p>
+  </div>
 {% endblock %}

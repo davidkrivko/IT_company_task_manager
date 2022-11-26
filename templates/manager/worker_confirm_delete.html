@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Are you sure?</h1>
-  <p>if you want to remove the task click the button below</p>
+  <div class="empty-block under-nav"> </div>
+  <div class="form">
+    <h1>Are you sure?</h1>
+    <p>if you want to remove the task click the button below</p>
 
-  <form action="" method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
 
-    <input type="submit" value="Delete" class="btn btn-danger">
-  </form>
+      <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
+  </div>
 {% endblock %}

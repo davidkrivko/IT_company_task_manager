@@ -5,35 +5,37 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    List Work
-    <a href="{% url "manager:worker-create" %}"
-       class="btn btn-primary CRUD_link">Create</a>
-  </h1>
-    {% if worker_list %}
-    <table class="table">
-      <tr>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Position</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
-    {% for worker in worker_list %}
-      <tr>
-        <td><a href="{% url "manager:position-detail" pk=worker.id %}">{{ worker.username }}</a></td>
-        <td>{{ worker.first_name }}</td>
-        <td>{{ worker.last_name }}</td>
-        <td>{{ worker.position }}</td>
-        <td><a href="{% url "manager:worker-update" pk=worker.id %}">Update</a></td>
-        <td><a href="{% url "manager:worker-delete" pk=worker.id %}">Delete</a></td>
-      </tr>
-    {% endfor %}
+  <div class="empty-block under-nav"> </div>
+  <div class="form">
+    <h1>
+      List Work
+      <a href="{% url "manager:worker-create" %}"
+         class="btn btn-primary CRUD_link">Create</a>
+    </h1>
+      {% if worker_list %}
+      <table class="table">
+        <tr>
+          <th>Username</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Position</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      {% for worker in worker_list %}
+        <tr>
+          <td><a href="{% url "manager:worker-detail" pk=worker.id %}">{{ worker.username }}</a></td>
+          <td>{{ worker.first_name }}</td>
+          <td>{{ worker.last_name }}</td>
+          <td>{{ worker.position }}</td>
+          <td><a href="{% url "manager:worker-update" pk=worker.id %}">Update</a></td>
+          <td><a href="{% url "manager:worker-delete" pk=worker.id %}">Delete</a></td>
+        </tr>
+      {% endfor %}
 
-    </table>
-  {% else %}
-    <p>At the moment we don't have positions</p>
-  {% endif %}
-
+      </table>
+    {% else %}
+      <p>At the moment we don't have positions</p>
+    {% endif %}
+  </div>
 {% endblock %}
