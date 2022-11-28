@@ -6,7 +6,6 @@ from manager.models import Worker, Task
 
 
 class WorkerCreationForm(UserCreationForm):
-
     class Meta:
         model = Worker
         fields = UserCreationForm.Meta.fields + ("first_name", "last_name", "position")
@@ -15,8 +14,8 @@ class WorkerCreationForm(UserCreationForm):
 class DescriptionUpdateForm(forms.ModelForm):
     description = forms.CharField(
         required=True,
-        validators=[MinLengthValidator(limit_value=100,
-                                       message="Input some more")])
+        validators=[MinLengthValidator(limit_value=100, message="Input some more")],
+    )
 
     class Meta:
         model: Task
@@ -28,5 +27,5 @@ class TaskSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by name"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by name"}),
     )

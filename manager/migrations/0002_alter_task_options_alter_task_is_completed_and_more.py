@@ -7,27 +7,37 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manager', '0001_initial'),
+        ("manager", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='task',
-            options={'ordering': ['is_completed', 'deadline', 'priority']},
+            name="task",
+            options={"ordering": ["is_completed", "deadline", "priority"]},
         ),
         migrations.AlterField(
-            model_name='task',
-            name='is_completed',
+            model_name="task",
+            name="is_completed",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='task_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tasks', to='manager.tasktype'),
+            model_name="task",
+            name="task_type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="tasks",
+                to="manager.tasktype",
+            ),
         ),
         migrations.AlterField(
-            model_name='worker',
-            name='position',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='workers', to='manager.position'),
+            model_name="worker",
+            name="position",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="workers",
+                to="manager.position",
+            ),
         ),
     ]

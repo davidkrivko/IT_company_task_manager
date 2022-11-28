@@ -23,7 +23,13 @@ class Position(models.Model):
 
 
 class Worker(AbstractUser):
-    position = models.ForeignKey(Position, blank=True, null=True, on_delete=models.CASCADE, related_name="workers")
+    position = models.ForeignKey(
+        Position,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name="workers",
+    )
 
     class Meta:
         ordering = ["username"]
@@ -48,7 +54,9 @@ class Task(models.Model):
         choices=PRIORITY_LEVEL_CHOICES,
         default="medium priority",
     )
-    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE, related_name="tasks")
+    task_type = models.ForeignKey(
+        TaskType, on_delete=models.CASCADE, related_name="tasks"
+    )
     assignees = models.ManyToManyField(Worker)
 
     class Meta:

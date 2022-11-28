@@ -66,8 +66,7 @@ def task_detail(request, pk):
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
-    fields = ["name", "description", "priority",
-              "deadline", "task_type", "assignees"]
+    fields = ["name", "description", "priority", "deadline", "task_type", "assignees"]
     success_url = reverse_lazy("manager:task-list")
 
 
