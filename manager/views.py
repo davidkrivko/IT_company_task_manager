@@ -32,7 +32,7 @@ def index(request):
 
 class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
-    paginate_by = 5
+    paginate_by = 10
     queryset = Task.objects.all().select_related("task_type")
 
     def get_context_data(self, *, object_list=None, **kwargs):
