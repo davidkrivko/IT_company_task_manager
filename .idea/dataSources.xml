@@ -13,7 +13,7 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="IT_manager Production DB" uuid="8c08c9ce-817c-4108-ae24-2ba355c7e658">
+    <data-source source="LOCAL" name="IT manager Production DB" uuid="e67ca7ed-829c-4dcb-b440-815c81f07c1f">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
