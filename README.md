@@ -5,6 +5,10 @@
 IT manager is a convenient manager for any IT company. 
 You can track your tasks, create new ones and delete them as well.
 
+## Check it out
+
+[IT manager deployed to render](https://it-manager.onrender.com/)
+
 
 ## Functions
 
