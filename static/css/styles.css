@@ -230,3 +230,10 @@ nav .dropdown:hover > .dropdown-menu {
     background-color: #43A047;
 }
 
+.pagination {
+    margin-left: 50px;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}

@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from manager.forms import WorkerCreationForm, TaskSearchForm
+from manager.forms import WorkerCreationForm, WorkerSearchForm
 from manager.models import Task, Position, Worker, TaskType
 
 
@@ -34,23 +34,6 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     paginate_by = 10
     queryset = Task.objects.all().select_related("task_type")
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(TaskListView, self).get_context_data(**kwargs)
-
-        name = self.request.GET.get("name", "")
-
-        context["search_form"] = TaskSearchForm(initial={"name": name})
-
-        return context
-
-    def get_queryset(self):
-        name = self.request.GET.get("name")
-
-        if name:
-            return self.queryset.filter(name__icontains=name)
-
-        return self.queryset
 
 
 @login_required
@@ -116,6 +99,24 @@ class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
 class WorkerListView(LoginRequiredMixin, generic.ListView):
     model = Worker
     paginate_by = 5
+    queryset = Worker.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(WorkerListView, self).get_context_data(**kwargs)
+
+        username = self.request.GET.get("username", "")
+
+        context["search_worker"] = WorkerSearchForm(
+            initial={"title": username})
+
+        return context
+
+    def get_queryset(self):
+        username = self.request.GET.get("username")
+
+        if username:
+            return self.queryset.filter(username__icontains=username)
+        return self.queryset
 
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
