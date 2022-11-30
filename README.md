@@ -1,13 +1,18 @@
 # IT_company_task_manager
 
-> Additional info
-
 IT manager is a convenient manager for any IT company. 
 You can track your tasks, create new ones and delete them as well.
 
 ## Check it out
 
 [IT manager deployed to render](https://it-manager.onrender.com/)
+
+If you want to try it:
+
+```shell
+Login: admin
+password: 12345678
+```
 
 
 ## Functions
@@ -34,7 +39,7 @@ You can track your tasks, create new ones and delete them as well.
 
 Python3 must be already installed
 
-```shell
+```
 git clone https://github.com/davidkrivko/IT_company_task_manager.git
 cd IT_company_task_manager
 python3 -m venv venv
